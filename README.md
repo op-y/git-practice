@@ -8,5 +8,5 @@
 * 主要内容放在contents目录，图片资源放置在images目录下
 
 ## 目录
-0 准备环境 
-  0.0 [确认可以操作这个仓库](https://github.com/op-y/git-practice/blob/master/contents/0/prepare-the-environment.md)
+- 0.准备环境
+  - 0.0 [确认可以操作这个仓库](https://github.com/op-y/git-practice/blob/master/contents/0/prepare-the-environment.md)
