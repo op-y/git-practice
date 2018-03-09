@@ -7,6 +7,6 @@
 4. git commit -m "your commit message"
 5. git push
 6. 成功完成以上操作后，通知我准备后边的内容。
-Q&A
+#### Q&A
 1. 如果你安装GIT之后，直接进行git clone不成功，可以看看[这里](https://github.com/op-y/git-practice/blob/master/contents/0/git-config-ssh.md)
 2. 如果你想用sublime写Markdown的话，可以看看[这里](https://github.com/op-y/git-practice/blob/master/contents/0/sublime-for-md.md)
