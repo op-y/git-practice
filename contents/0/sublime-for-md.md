@@ -1,5 +1,5 @@
 # MarkdownEditing 与 OmniMarkupPreviewer 插件安装
-
+若要使用sublime 进行 md文件编写，可以考虑安装MarkdownEditing 与 OmniMarkupPreviewer两个插件，前者是编写界面友好化，后者是可进行浏览器浏览。  当然，你也可以玄奇其他编辑器比如atom等，希望你能找到你喜欢的编辑器，祝你好运。
 ### 一、MarkdownEditing安装
 1、打开控制台        ctrl + `  
 2、打开命令面板      command + shift + p  
