@@ -42,7 +42,7 @@ $ man git-<verb>
 # Git 配置
 本地使用 git 过程中，有三个配置文件
  
-* 系统（system）配置，对系统上所有用户都生效，Linux上位于 **/etc/config**  
+* 系统（system）配置，对系统上所有用户都生效，Linux上位于 **/etc/gitconfig**  
 * 用户全局（global）配置，对于当前用户所有代码库生效，Linux上位于 **～/.gitconfig**  
 * 当前代码库的配置，仅对于当前代码库生效，位于代码库目录下 **.git/config**
 
@@ -55,7 +55,7 @@ git config --global user.name "op-y"
 git config --global user.email op-y@example.com
 git config --global core.editor vim
 git config --global merge.tool vimdiff
-git config --global alias.co chekcout
+git config --global alias.co checkout
 
 # 查看配置
 git config --list
