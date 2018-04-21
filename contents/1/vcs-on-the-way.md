@@ -29,13 +29,13 @@ Create by op-y & Celine.
 ![diff](https://github.com/op-y/git-practice/blob/master/images/1/snip.1-0.png) 
 
 我们重定向保存文件的变化 `diff -u version0.txt version1.txt > diff.txt` ，现在我们可以利用 **version0.txt** 和 **version1.txt** 两个文件中的一个，以及差异文件（我们称之为patch）恢复另一个文件了。  
-执行 `patch version0.txt < diff.txt`，然后我们看看打过patch的 **version0.txt文件 `cat version0.txt`  
+执行 `patch version0.txt < diff.txt`，然后我们看看打过patch的 **version0.txt文件** `cat version0.txt`  
 ![version0 to version1](https://github.com/op-y/git-practice/blob/master/images/1/snip.1-1.png)  
-同样的执行 `patch -R version0.txt < diff.txt`，注意这里是方向操作所以使用了 `-R` 参数，然后我们看看打过（去掉）patch的 **version1.txt文件 `cat version1.txt`  
+同样的执行 `patch -R version0.txt < diff.txt`，注意这里是方向操作所以使用了 `-R` 参数，然后我们看看打过（去掉）patch的 **version1.txt** 文件 `cat version1.txt`  
 ![version1 to version0](https://github.com/op-y/git-practice/blob/master/images/1/snip.1-2.png)  
 
 ## 集中式版本控制系统
-互联网时代到来后，版本控制系统需要解决一个问题，那就是如何处理不同开发者在不同系统上协同工作的问题。CVCS（Centralized Version Control Systems）应运而生。1986年 *CVS* 诞生开启了集中式版本控制时代，而随后的 *SVN（Subversion）*无疑是集中式版本控制系统的集大成者。  
+互联网时代到来后，版本控制系统需要解决一个问题，那就是如何处理不同开发者在不同系统上协同工作的问题。CVCS（Centralized Version Control Systems）应运而生。1986年 *CVS* 诞生开启了集中式版本控制时代，而随后的 *SVN*（*Subversion*）无疑是集中式版本控制系统的集大成者。  
 集中式版本控制系统示意图如下
 
 ![centralized version control system](https://github.com/op-y/git-practice/blob/master/images/1/draft.1-1.png)
