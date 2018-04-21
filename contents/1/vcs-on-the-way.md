@@ -46,7 +46,7 @@ Create by op-y & Celine.
 互联网经历较长时间发展后，我们迎来了去中心化的时代。分布式版本控制系统在这个时期诞生，如 *Git*，*Mercurial*，*Bazaar* 以及 *Darcs* 等。相比集中式版本控制系统而已，分布式版本控制系统最大的特点是，每个开发者本地都有一个完整的版本控制数据库（我的地盘我做主！）只在需要的时候，在不同开发者之间（包括所谓官方库）进行数据交换。
 分布式版本控制系统示意图如下
 
-![distributed version control system](https://github.com/op-y/git-practice/blob/master/images/1/draft.1-1.png)
+![distributed version control system](https://github.com/op-y/git-practice/blob/master/images/1/draft.1-2.png)
 
 ## Git的诞生
 Git的创造者是大名鼎鼎的 Linus Torvalds。  
@@ -64,7 +64,7 @@ Git的创造者是大名鼎鼎的 Linus Torvalds。
 * 2005年6月16日，*Linux kernel 2.6.12* 发布，Git已经在维护Linux内核源码了
 * 2005年7月26日，老李深藏功与名，Git交由其他贡献者和社区维护
 
-后来的故事大家都知道了，Git风靡风靡开源社区；*BitKeeper* 固守自己的商业化策略后来日渐式微，后来为了能继续活下去，也开源了，开源后代码托管在 [Github](https://github.com) 上...  
+后来的故事大家都知道了，Git风靡开源社区；*BitKeeper* 固守自己的商业化策略后来日渐式微，后来为了能继续活下去，也开源了，开源后代码托管在 [Github](https://github.com) 上...  
 
 这个故事告诉我们
 > 不要随便去惹大神，分分钟吊打你...
