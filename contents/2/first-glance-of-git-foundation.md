@@ -26,7 +26,8 @@ What's staging?
 这个时候我们尝试提交一下看看 `git commit -m "craete a staging-demo.txt"`，然后我们看到 *git* 提交操作并未成功，输出信息大意是 **当前我们在master分支上，我们的分支状态是最新的，但是工作区有未被Git跟踪的文件**  
 ![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-2.png)  
 我们可以执行一下查看状态命令 `git status`  
-![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-3.png)    命令输出提示 **有未被Git跟踪文件**，用户可以使用 `git add` 命令开始跟踪文件（实际上就是新文件添加到暂存区），这个时候我们根据提示执行命令 `git add staging-demo.txt` 开始对文件 **staging-demo.txt** 进行跟踪，然后再执行命令 `git status` 看看状态  
+![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-3.png)  
+命令输出提示 **有未被Git跟踪文件**，用户可以使用 `git add` 命令开始跟踪文件（实际上就是新文件添加到暂存区），这个时候我们根据提示执行命令 `git add staging-demo.txt` 开始对文件 **staging-demo.txt** 进行跟踪，然后再执行命令 `git status` 看看状态  
 ![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-4.png)  
 这个时候命令输出显示变成 **有文件变更等待被提交** 了，使用 `git status -s` 使用缩略方式看看状态  
 ![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-5.png)  
@@ -34,7 +35,7 @@ What's staging?
 ![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-6.png)  
 这次我们看到提交成功了，本次提交生成的commit ID是 **e239d7d**，到这里我们已经完成了一次提交工作。  
 
-接下来我们再一遍！  
+**接下来我们再一遍！**
 修改 **staging-demo.txt** 文件新增一行内容 **Add a new line**，这个时候我们使用 `git status` 和 `git status -s` 看看状态  
 ![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-7.png)   
 ![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-8.png)   
@@ -51,11 +52,11 @@ Hello World!
 输出显示 **staging-demo.txt** 的修改等待提交，**staging-demo-again.txt** 等待被添加到暂存区，再执行 `git add staging-demo-again.txt` 将 **staging-demo-again.txt** 添加到暂存区，用 `git status` 以及 `git status -s` 查看状态  
 ![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-11.png)  
 ![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-12.png)  
-现在两个文件都在暂存区中等待被提交，我们在修改一下 **staging-demo-again.txt** 文件（Hello World！复制了两行），在用 `git status` 以及 `git status -s` 查看状态  
+现在两个文件都在暂存区中等待被提交，我们再修改一下 **staging-demo-again.txt** 文件（Hello World！复制了两行），在用 `git status` 以及 `git status -s` 查看状态  
 ![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-13.png)  
 ![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-14.png)  
-看到了没，这次缩略状态显示，文件左边既有绿色的暂存区状态又有红色的工作区域状态（为了看到这个折腾了一圈～），继续执行 `git add staging-demo-again.txt` 将文件修改添加到暂存区，执行 `git statu -s` 红色工作区修改状态没了  
-![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-15.png) 
+看到了没，这次缩略状态显示，文件左边既有绿色的暂存区状态又有红色的工作区状态（为了看到这个折腾了一圈～），继续执行 `git add staging-demo-again.txt` 将文件修改添加到暂存区，执行 `git statu -s` 红色工作区修改状态没了  
+![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-15.png)  
 终于我们可以完成这次演示工作了 `git commit -m "add a new file staging-demo-again.txt"`  
 ![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-16.png)   
 
