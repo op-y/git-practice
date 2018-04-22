@@ -6,7 +6,7 @@
 
 ![local version control system](https://github.com/op-y/git-practice/blob/master/images/1/draft.1-0.png) 
  
-`diff` + `patch` 本地演示
+`diff` + `patch` 本地演示  
 我们在本地创建 **version0.txt** 文件，内容为
 
 ```
@@ -31,7 +31,7 @@ Create by op-y & Celine.
 我们重定向保存文件的变化 `diff -u version0.txt version1.txt > diff.txt` ，现在我们可以利用 **version0.txt** 和 **version1.txt** 两个文件中的一个，以及差异文件（我们称之为patch）恢复另一个文件了。  
 执行 `patch version0.txt < diff.txt`，然后我们看看打过patch的 **version0.txt文件** `cat version0.txt`  
 ![version0 to version1](https://github.com/op-y/git-practice/blob/master/images/1/snip.1-1.png)  
-同样的执行 `patch -R version0.txt < diff.txt`，注意这里是方向操作所以使用了 `-R` 参数，然后我们看看打过（去掉）patch的 **version1.txt** 文件 `cat version1.txt`  
+同样的执行 `patch -R version0.txt < diff.txt`，注意这里是反方向操作所以使用了 `-R` 参数，然后我们看看打过（去掉）patch的 **version1.txt** 文件 `cat version1.txt`  
 ![version1 to version0](https://github.com/op-y/git-practice/blob/master/images/1/snip.1-2.png)  
 
 ## 集中式版本控制系统
@@ -52,7 +52,7 @@ Create by op-y & Celine.
 Git的创造者是大名鼎鼎的 Linus Torvalds。  
 大神总有些异于凡人的认知/想法/行为，老李（原谅我这么称呼他）坚定的反对CVS和SVN（也许是集中式管理不符合他的理念？），十多年来坚持手工打patch的方式进行 *Linux kernel* 的维护。后来顶不住社区的声讨，02-05年间找到了一个叫做 *BitKeeper* 的分布式版本控制系统对项目进行管理。
 
-剧情的发展总是很出人意料，2005年 Andrew Tridgell（*samnba* 的创造者） 出于xx目的对 *BitKeeper* 进行反向工程，这种行为惹恼了 *BitKeeper* 的所属公司，其收回了对Linux社区对授权。无奈之下老李只能动动手参考 *BitKeeper* 的设计思想，自己写一个分布式版本控制系统 -- 于是Git就这样诞生了。  
+剧情的发展总是很出人意料，2005年 Andrew Tridgell（*samnba* 的创造者） 出于xx目的对 *BitKeeper* 进行反向工程，这种行为惹恼了 *BitKeeper* 的所属公司，其收回了对Linux社区的授权。无奈之下老李只能动动手参考 *BitKeeper* 的设计思想，自己写一个分布式版本控制系统 -- 于是Git就这样诞生了。  
 
 **Git 诞生历程**
 

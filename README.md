@@ -16,3 +16,11 @@
    - 1.1.[版本控制系统的演变](https://github.com/op-y/git-practice/blob/master/contents/1/vcs-on-the-way.md)
    - 1.2.[Git的优点](https://github.com/op-y/git-practice/blob/master/contents/1/advantages-of-git.md)
    - 1.3.[Git的安装和使用准备](https://github.com/op-y/git-practice/blob/master/contents/1/prepare-git.md)
+- 2.Git基础操作
+   - 2.0.[你需要了解点Git基础知识](https://github.com/op-y/git-practice/blob/master/contents/2/)
+   - 2.1.[获取项目的Git仓库](https://github.com/op-y/git-practice/blob/master/contents/2/)
+   - 2.2.[提交你的工作到Git仓库](https://github.com/op-y/git-practice/blob/master/contents/2/)
+   - 2.3.[查看提交记录](https://github.com/op-y/git-practice/blob/master/contents/2/)
+   - 2.4.[撤销操作](https://github.com/op-y/git-practice/blob/master/contents/2/)
+   - 2.5.[使用远程仓库](https://github.com/op-y/git-practice/blob/master/contents/2/)
+   - 2.5.[使用标签](https://github.com/op-y/git-practice/blob/master/contents/2/)
