@@ -124,5 +124,30 @@ commit、tree、parent 三个40位十六进制的值（其实就是前边提到�
 其实很直观能看出对应了几个表示文件的 *Git* 对象。尝试看看 **100644 blob 41b34509a896b02b7efce0ae4b94a8283f9840b7	README.md**  
 ![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-23.png)  
 是一个blob对象（big binary object），文件内容就是README.md的容。而tree对象内容对应的4个项目就是我们当前项目里的文件和目录，所以 *tree对象记录了当前提交对应文件的版本*。  
-再看 **parent 175f8f4f46356899465113c2d7d9089d661ef13c** 指向了另一个commit对象。  
+再看 **parent 175f8f4f46356899465113c2d7d9089d661ef13c** 指向了另一个commit对象 **3d52b5d6f225a963b713e6ad86c11adec1cad703**。  
 ![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-22.png)  
+回顾一下本小节第一个提交日志图，我专门用红框和箭头标记出了这种 **parent --> commit** 的关联，是不是发现parent其实就指向了上一个提交对象（这里提前剧透一下，如果是合并分支得到的提交对象会有多个parent）。我们追溯本项目的提交对象可以得到下图关系  
+![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/draft.2-3.png)  
+可以从当前的提交回溯到第一次初始提交（第一次提交没有parent，图中省略部分其实还包含了你之前做分支/合并实验的一些提交，分支相关内后后边再详细讲）。  
+我们还可以使用 `git log --graph --pretty=raw` 命令，在终端以模拟图形方式查看提交历史记录  
+![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-24.png)  
+看到这个图有没有联想到啥？这个提交提交再提交的过程不就是我们的master分支（忽略你之前的分支实验）吗？！是不是有些曙光乍现的感觉？  
+现在我们已经聊到master分支了，那就得看看 *master*，我们执行 `git branch` 确认我们当前确实在master分支  
+![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-25.png)  
+没毛病，来我们执行一下 `git log -l master` 和 `git log -l ref/heads/master`，看到的竟然和之前执行 `git log` 查看到的提交历史一毛一样。在 **.git** 下边我们可以找到对应文件 **.git/ref/heads/master**  
+![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-26.png)  
+执行 `cat master` 看到就是最后一次提交的提交对象40位十六进制数值（这里显示的是 **115835f2f940ff1cba90163b866f72fb44c187d4**，因为过程中我为了保存进度又提交过，结合之前演示 **f71f3b6723f58cb17491b5b9977326e324b7ea11** 更加合理）。  
+现在我们清楚了，*master* 就是我们当前（分支）最后一个提交对象的引用（注意只是一个引用，并不是一个对象，所以放在了 **.git/ref** 目录下），*master 的功能就是跟踪master分支*（同理如果存在其它的例如bugfix分支，就会有一个bugfix也就是ref/heads/bugfix引用对其进行跟踪）。  
+搞定 *master* 后，我们再来看看之前遇到过的 *HEAD* 这个玩意儿。执行一下 `git log -l HEAD` 看看输出，我了个去，和 `git log` 还是一样的！再看看 **.git** 下边，果然有个 **.git/HEAD** 文件， `cat HEAD` 看下，直接告诉你就是master的引用 **ref: refs/heads/master**。为啥需要在引用之上再做一个引用呢？一个图来说明  
+![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/draft.2-4.png)  
+相信看到 `git checkout` 你应该瞬间明白了 *HEAD* 的作用，它就是用来指示当前我们工作在哪个分支下的，如图（我假设了一次新的master分支提交，和一个新的分支bugfix)，我们执行 `git checkout bugfix` 就是将HEAD的引用改成了 **ref/heads/bugfix**。此外我们执行 `git checkout v0.1` 就是将HEAD的引用改成了 **ref/tags/v0.1**（这里说到了tag，后续会详细再说）。现在明白 *HEAD* 的作用了吧？
+
+补充解释
+> **分离头指针** 模式：之前你工作 `git checkout v0.1` 后再执行提交，发现新提交并没有到master上。现在你应该明白了吧？这种情况下 *HEAD* 并没在跟踪某个分支，而是在一个历史提交上（和分支引用分离所以叫分离头指针），你这时候的提交相当于在tag对应历史提交上外链了一个新提交（类似一个分支，但是你又没有创建分支）。这么解释不知道我有没有说明白？  
+> 分支（branch）和标签（tag）的区别：两者都可以看成引用，只是分支引用在跟踪提交操作而变化，标签是个静态的引用贴在一个固定的提交上，其实分支和标签的名字就非常形象！  
+> 演示过程中还 **.git** 目录下还有很多内容，和后续内容有关
+
+最后再丰富一下 *Git* 版本控制系统示意图，是不是清晰很多了！  
+![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/draft.2-5.png)  
+
+## 相关内容
