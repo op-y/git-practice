@@ -83,3 +83,46 @@ Hello World!
 图中的 **HEAD**、**master** 以及那些箭头，通过后续的讲解就会知道其含义。
 
 ## Git 对象
+介绍 *Git* 对象之前，先知晓一个事实。以前的许多版本控制系统，通过记录文件的变化（类似我们在1.1中看到的 **diff.txt**）进行版本控制；*Git* 则直接保存文件快照（文件在保存时刻的完整内容）进行版本控制。这些文件快照以及和这些文件快照相关的内容在 *Git* 中以二进制的形式保存，这些二进制文件就是我们要介绍的 *Git* 对象。  
+![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/draft.2-2.png)  
+上图中 *Git* 版本控制，每个版本中未发生变化（相对之前版本）的文件，其实就是指向之前文件的链接。  
+接下来我们从最后一次提交开始介绍 *Git* 对象。  
+![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-18.png)  
+通过 `git log --pretty=raw` 提交日志查看命令（`--pretty=raw` 参数会显示提交对象的内容），我们看到最后一次提交（一个修改错别字到提价 **content 2-0 part 1 bugfix**）包含了以下信息  
+
+```
+commit f71f3b6723f58cb17491b5b9977326e324b7ea11
+tree 7a0a43a6376f31d0a265a44383395cdc8682297f
+parent 175f8f4f46356899465113c2d7d9089d661ef13c
+author yezhiqin <ye.zhiqin@outlook.com> 1524493318 +0800
+committer yezhiqin <ye.zhiqin@outlook.com> 1524493318 +0800
+
+    content 2-0 part 1 bugfix
+
+```
+
+commit、tree、parent 三个40位十六进制的值（其实就是前边提到过的SHA1哈希值），作者信息author，提交人信息committer，以及单独的一行提交说明。关键我们就需要看那3个40位十六进制数表示什么了。  
+接下来有请我们的 **.git** 目录了（对就是那个本地仓库）  
+![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-19.png)  
+**.git** 下有个 **objects** 目录就是用来保存 **Git** 对象（二进制表示的数据）的。我们 `ls` 看到 **object上** 下有很多2位十六进制数命名的目录，结合上边提交日志里 `commit f71f3b6723f58cb17491b5b9977326e324b7ea11` 以f7开头，我们看下 **f7** 目录，`ls` 发现里边现在有两个文件，其中一个是 **1f3b6723f58cb17491b5b9977326e324b7ea11**，你有没有发现什么？  
+**f7 + 1f3b6723f58cb17491b5b9977326e324b7ea11 = f71f3b6723f58cb17491b5b9977326e324b7ea11**  
+提交日志信息里的40位十六进制数其实就对应着一个objects文件。  
+接下来有请一个 *Git* 底层命令 `git cat-file` ，这个命令用来查看对象文件  
+![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-20.png)  
+分别执行 `git cat-file -t f71f3b6723f58cb17491b5b9977326e324b7ea11` 和 `git cat-file -p f71f3b6723f58cb17491b5b9977326e324b7ea11` 我们可以看到 **f71f3b6723f58cb17491b5b9977326e324b7ea11** 的对象种类是 *commit* 以及对象内容（就是刚刚看到的提交信息）。  
+同理可以对提交信息中tree和parent对应的40位十六进制数进行这个操作。  
+我们先看 **tree 7a0a43a6376f31d0a265a44383395cdc8682297f** 对应了一个类型位tree的对象，内容为   
+![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-21.png)  
+
+```
+100644 blob 94a9ed024d3859793618152ea559a168bbcbb5e2	LICENSE
+100644 blob 41b34509a896b02b7efce0ae4b94a8283f9840b7	README.md
+040000 tree 43b40085570613966ba5141036ddaffea96f2cc2	contents
+040000 tree ca8e4c1e9088b9498b3da18893b57b6dd8c262b4	images
+```
+
+其实很直观能看出对应了几个表示文件的 *Git* 对象。尝试看看 **100644 blob 41b34509a896b02b7efce0ae4b94a8283f9840b7	README.md**  
+![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-23.png)  
+是一个blob对象（big binary object），文件内容就是README.md的容。而tree对象内容对应的4个项目就是我们当前项目里的文件和目录，所以 *tree对象记录了当前提交对应文件的版本*。  
+再看 **parent 175f8f4f46356899465113c2d7d9089d661ef13c** 指向了另一个commit对象。  
+![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-22.png)  
