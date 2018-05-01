@@ -26,7 +26,7 @@
 这个时候我们在当前目录下创建一个新文件 **.gitignore**，在文件中添加内容  
 ![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-38.png)  
 ![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-39.png)  
-保存后再使用 `git status` 查看状态，发现 **test.o** 和 **a.out** 已经被 *Git* 项目给忽略了（这里说明一点，如果需要忽略**.gitignore**文件，则 *.gitignore* 也需要做一行内容放入文件中，这里看不到是因为项目顶层目录下也有**.gitignore**文件将其忽略掉了）。至此文件忽略基本概念和使用已经说明了。补充一些内容。  
+保存后再使用 `git status` 查看状态，发现 **test.o** 和 **a.out** 已经被 *Git* 项目给忽略了（这里说明一点，如果需要忽略 **.gitignore** 文件，则 *.gitignore* 也需要做一行内容放入文件中，这里看不到是因为项目顶层目录下也有 **.gitignore** 文件将其忽略掉了）。至此文件忽略基本概念和使用已经说明了。补充一些内容。  
 
 * **.gitignore** 可以存在项目的任何目录中，作用范围是当前目录及其子目录
 * 使用 `git status --ignore` 可以查看被忽略的文件
@@ -103,9 +103,9 @@ index 0000000..476903a
 
 ## 删除文件
 已经被纳入 *Git* 版本控制的文件，如果后续需不再需要，也可以将文件从 *Git* 追踪的文件中删除。我们用 **working-commit.txt** 试试。直接执行 `rm working-commit.txt` 看看好不好使。  
-![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-43.png)  
+![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-42.png)  
 发现状态是有变更未被暂存，*Git* 友好的提示了文件被删除了。而执行 `git rm <filename>` 则直接将工作区文件删除，并且标记到暂存区，表示该文件不再纳入版本控制（之前的版本中还是有的）。  
-![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-44.png)  
+![git workflow](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-43.png)  
 还有一种情况是，文件已经被暂存，我们想要删除暂存区中的文件但是需要留下工作区的文件，可以使用 `git rm --cached <filename>`  
 被删除的文件如果想要恢复怎么办？可以自己想象。提示：*checkout*
 
