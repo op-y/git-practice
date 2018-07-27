@@ -45,7 +45,7 @@ public fun1(){
 2. 请求远程插件仓库  输入命令：install Package   
 3. 输入插件名称      OmniMarkup...  
 4. 选中插件 - 回车 - 安装    
-5. 按成成功后，会跳出说明文档，可以大致浏览下，尤其是快捷键（Ctrl+Alt+O，浏览器预览快捷键）    
+5. 安装成功后，会跳出说明文档，可以大致浏览下，尤其是快捷键（Ctrl+Alt+O，浏览器预览快捷键）    
 6. 选择一个md文件进行预览，效果如下图:
 
 ![Preview Markup in Browser.](../../images/2018030801.png)
