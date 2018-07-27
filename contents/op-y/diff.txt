@@ -1,0 +1,10 @@
+--- version0.txt	2018-04-21 12:39:59.000000000 +0800
++++ version1.txt	2018-04-21 12:41:04.000000000 +0800
+@@ -1,4 +1,5 @@
+ Hello World!
+-This is the version 0 of the document.
++Hello Git!
++This is the version 1 of the document.
+ 
+-Create by op-y.
++Create by op-y & Celine.

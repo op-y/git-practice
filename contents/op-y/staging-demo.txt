@@ -1,0 +1,5 @@
+What's staging?
+Add a new line.
+
+for working-commit.
+for working-commit again.
