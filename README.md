@@ -15,3 +15,8 @@
    - 1.0.[为啥要用版本控制系统？](https://github.com/op-y/git-practice/blob/master/contents/1/why-cvs.md)
    - 1.1.[版本控制系统的演变](https://github.com/op-y/git-practice/blob/master/contents/1/vcs-on-the-way.md)
    - 1.2.[Git的优点](https://github.com/op-y/git-practice/blob/master/contents/1/advantages-of-git.md)
+   - 
+
+- 最后：
+    - 1.[git遇到的错误集锦](https://github.com/op-y/git-practice/blob/master/contents/celine/error-collect.md)
+    - 2.[git的一些具体场景应用](https://github.com/op-y/git-practice/blob/master/contents/celine/case-collect.md)
