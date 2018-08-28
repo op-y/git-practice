@@ -36,3 +36,7 @@ git pull --rebase origin master
 #pull成功后再进行push
 git push -u origin master
 ```
+#### 3. 切换分支失败
+**执行代码：**  `git checkout branchA`  
+**错误提示：**  `error: cannot stat ‘file’: Permission denied`
+**解决方法：** 这种错误一般是该分支上的文件被电脑占用（编辑器、浏览器等），无法释放。解决方法是退出各类和分支上文件相关编辑器、浏览器、资源管理器等，再进行切换 .
