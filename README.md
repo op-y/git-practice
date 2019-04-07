@@ -20,7 +20,7 @@
    - 2.0.[你需要了解点Git底层实现](https://github.com/op-y/git-practice/blob/master/contents/2/first-glance-of-git-foundation.md)
    - 2.1.[获取项目的Git仓库](https://github.com/op-y/git-practice/blob/master/contents/2/get-repository.md)
    - 2.2.[提交你的工作到Git仓库](https://github.com/op-y/git-practice/blob/master/contents/2/commit-your-work.md)
-   - 2.3.[查看提交记录](https://github.com/op-y/git-practice/blob/master/contents/2/)
+   - 2.3.[查看提交记录](https://github.com/op-y/git-practice/blob/master/contents/2/commit-history.md)
    - 2.4.[撤销操作](https://github.com/op-y/git-practice/blob/master/contents/2/)
    - 2.5.[使用远程仓库](https://github.com/op-y/git-practice/blob/master/contents/2/)
    - 2.5.[使用标签](https://github.com/op-y/git-practice/blob/master/contents/2/)
