@@ -23,8 +23,9 @@
    - 2.3.[查看提交记录](https://github.com/op-y/git-practice/blob/master/contents/2/commit-history.md)
    - 2.4.[撤销操作](https://github.com/op-y/git-practice/blob/master/contents/2/revoke-operations.md)
    - 2.5.[使用远程仓库](https://github.com/op-y/git-practice/blob/master/contents/2/remote-repository.md)
-   - 2.6.[使用标签](https://github.com/op-y/git-practice/blob/master/contents/2/)
-   - 
+   - 2.6.[使用标签](https://github.com/op-y/git-practice/blob/master/contents/2/milestone-in-project.md)
+- 3.Git协作
+   - 3.0.[分支介绍](https://github.com/op-y/git-practice/blob/master/contents/3/)
 - 最后：
     - 1.[git遇到的错误集锦](https://github.com/op-y/git-practice/blob/master/contents/celine/error-collect.md)
     - 2.[git的一些具体场景应用](https://github.com/op-y/git-practice/blob/master/contents/celine/case-collect.md)
