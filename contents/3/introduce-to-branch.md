@@ -63,20 +63,40 @@ Specific git-branch actions:
 
 我们使用 `git branch` 或者 `git branch --list` 可以看到当前存在的分支，目前这个点我们只有一个master分支，有时候我们管master分支叫主干（trunk）分支或者就叫主干，这和后边要会介绍的开发模型有关。
 
-![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/draft.3-0.png)
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-0.png)
 
 现在我们可以使用 `git branch demo` 命令来创建一个用于操作说明的分支。然后再使用 `git branch --list` 我们可以看到列表中已经有新的分支demo了，注意那个雪花号，表示我们虽然创建了新的分支，但是我们当前还是在master分支上。
 
-![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/draft.3-1.png)
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-1.png)
 
 用 `git log --oneline --graph` 我们可以到提交历史和分支的状态，下图中的4个红色框框，表示了当前HEAD正引用master分支，远程origin的HEAD也指向它的master分支，同时本地仓库master分支、demo分支和远程的master分支都指向commit f0b636a。
 
-我们可以使用 `git checkout [branch-name]` 命令来切换分支，这里我们 `git checkout demo`，系统会提示我们已经切换分支，如图。
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-2.png)
 
-![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/draft.3-2.png)
+我们可以使用 `git checkout [branch-name]` 命令来切换分支，这里我们 `git checkout demo`，系统会提示我们已经切换分支，如图，还显示了工作区里有改变。
 
-由于我们这里对代码仓库做了一些修改，并增加了当前正在编辑的这个文件，我们 `git checkout master` 回到master分支，做一次 **add content 3-0** 提交。
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-3.png)
 
+由于我们这里对代码仓库做了一些修改，并增加了当前正在编辑的这个文件，我们 `git checkout master` 回到master分支，做一次 **add content 3-0** 提交。完成提交后我们再 `git log --oneline --graph` 看看，当前master分支和demo分支已经指向了不同的commit，而且master是领先一步的。
 
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-4.png)
+
+我们的演示继续，`git checkout demo` 切换到demo分支，然后我们增加一个 **branch-demo.txt** 文件。
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-5.png)
+
+此时在demo分支上做一次提交，完事后 `git log --oneline --graph --all` 查看如下图，这里已经显示分叉了。
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-6.png)
+
+然后我们 `git checkout master` 切回master分支。模拟一个合并场景，这里我们执行 `git merge demo` 讲demo分支合并到master分支上（类似我们做bugfix）
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-7.png)
+
+这个时候在master分支上也有新增的 branch-demo.txt 文件了。最后我们 `git log --oneline --graph --all` 看一下提交状态了。这里两条线又汇聚到一块儿了。
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-8.png)
+
+最后叨叨一句，从最后图中的线条，你是不是理解为啥叫分支（branch）了？
 
 

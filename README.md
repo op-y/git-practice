@@ -25,7 +25,7 @@
    - 2.5.[使用远程仓库](https://github.com/op-y/git-practice/blob/master/contents/2/remote-repository.md)
    - 2.6.[使用标签](https://github.com/op-y/git-practice/blob/master/contents/2/milestone-in-project.md)
 - 3.Git协作
-   - 3.0.[分支介绍](https://github.com/op-y/git-practice/blob/master/contents/3/)
+   - 3.0.[分支介绍](https://github.com/op-y/git-practice/blob/master/contents/3/introduce-to-branch.md)
    - 3.1.[分支创建与合并](https://github.com/op-y/git-practice/blob/master/contents/3/)
    - 3.2.[分支管理](https://github.com/op-y/git-practice/blob/master/contents/3/)
    - 3.3.[开发模型](https://github.com/op-y/git-practice/blob/master/contents/3/)
