@@ -42,7 +42,7 @@ usage: git remote [-v | --verbose]
 
 ![git-practice](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-63.png)
 
-接下来使用 `git remote add` 添加一个远程仓库，由于之前 Celine Wang fork过我这个仓库，我就用Celine的仓库地址了。完事之后再 `git remote -v` 就可以看到名为 celine 的新远程仓库了。
+接下来使用 `git remote add` 添加一个远程仓库，由于之前 Celine Wong fork过我这个仓库，我就用Celine的仓库地址了。完事之后再 `git remote -v` 就可以看到名为 celine 的新远程仓库了。
 
 ![git-practice](https://github.com/op-y/git-practice/blob/master/images/2/snip.2-64.png)
 
