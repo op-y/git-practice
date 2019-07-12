@@ -11,11 +11,106 @@
 
 开始吧！
 
+新建 **v1.1-release.txt**、**after-v1.1-1.txt**、**after-v1.1-2.txt** 文件，分别做一次提交。**v1.1-release.txt** 这次提交当成是v1.1版本发布，我们做个标签 **v1.1** 。
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-9.png)
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-10.png)
+
+发现v1.1的Bug，我们从v1.1拉出新分支 **bugfix-v1.1**：`git checkout -b bugfix-v1.1 v1.1`
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-11.png)
+
+这个时候我们查看提交日志，已经有 master和bugfix-v1.1两个分支了
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-12.png)
+
+来，把Bug修了
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-13.png)
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-14.png)
+
+完成Bug修复，做一次 **finish v1.1 bugfix** 的提交，图形化查看提交日志如下
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-15.png)
+
+至此我们已经完成了在新分支上的Bug修复（也演示了从历史提交上创建新分支）
+
 ## 分支合并
 
+继续上边的任务，我们演示分支的合并。分支合并使用 `git merge` 命令，这个命令功能也挺多，看一下help
+
+```
+usage: git merge [<options>] [<commit>...]
+   or: git merge --abort
+   or: git merge --continue
+
+    -n                    do not show a diffstat at the end of the merge
+    --stat                show a diffstat at the end of the merge
+    --summary             (synonym to --stat)
+    --log[=<n>]           add (at most <n>) entries from shortlog to merge commit message
+    --squash              create a single commit instead of doing a merge
+    --commit              perform a commit if the merge succeeds (default)
+    -e, --edit            edit message before committing
+    --ff                  allow fast-forward (default)
+    --ff-only             abort if fast-forward is not possible
+    --rerere-autoupdate   update the index with reused conflict resolution if possible
+    --verify-signatures   verify that the named commit has a valid GPG signature
+    -s, --strategy <strategy>
+                          merge strategy to use
+    -X, --strategy-option <option=value>
+                          option for selected merge strategy
+    -m, --message <message>
+                          merge commit message (for a non-fast-forward merge)
+    -F, --file <path>     read message from file
+    -v, --verbose         be more verbose
+    -q, --quiet           be more quiet
+    --abort               abort the current in-progress merge
+    --continue            continue the current in-progress merge
+    --allow-unrelated-histories
+                          allow merging unrelated histories
+    --progress            force progress reporting
+    -S, --gpg-sign[=<key-id>]
+                          GPG sign commit
+    --overwrite-ignore    update ignored files (default)
+    --signoff             add Signed-off-by:
+    --verify              verify commit-msg hook
+```
+
+我们先 `git checkout master` 切回到master分支上
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-16.png)
+
+使用 `git merge bugfix-v1.1` 命令，我们将 bugfix-v1.1 分支合并到 master分支上，由于这里我们仅仅是在 **bugfix-v1.1** 上添加文件和修改了文件，*Git* 很智能的帮我们判断出两个分支没有冲突直接自动合并了（冲突问题后边还会说，是否自动合并我们也可以修改*Git*默认合并策略）
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-17.png)
+
+合并后从提交日志里可以看到两个分支状态如下，由于合并产生了一个新的提交。
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-18.png)
 
 ## 分支管理
 
+继续上边的任务，除了分支创建和合并，我们还能做一些分支管理操作。例如分支删除。
+
+上边 **bugfix-v1.1** 分支合并入 **master** 分支后，Bug修复工作已经完成了。我们可以删除这个分支了。
+
+`git branch -d bugfix-v1.1` 删除之
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-19.png)
+
+再次查看提交日志，已经看不到 **bugfix-v1.1** 分支了
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-20.png)
+
+除了分支删除操作，我们还可以
+
+`git branch -l` 列出存在的分支
+
+`git branch -m` 重命名某个分支
+
+等等...
 
 ## 冲突解决
 
