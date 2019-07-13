@@ -123,10 +123,68 @@ usage: git merge [<options>] [<commit>...]
 
 当遇到以上这些操作时，我们就要做冲突解决。
 
-### 自动合并
+### 自动合并与手动合并
 
-*Git* 非常智能，当发现不同分支中存在冲突时，能判断冲突类型，如果冲突能自动的解决（在自动合并的策略下）*Git* 会尝试自动解决冲突。这一类场景通常包括快进（Fast-Forwarding）合并，不同分支添加/修改了不同的文件，不同分支修改相同文件的不同部分等。下边我们就演示一把这类场景。
+*Git* 非常智能，当发现不同分支中存在冲突时，能判断冲突类型，如果冲突能自动的解决（在自动合并的策略下）*Git* 会尝试自动解决冲突。这一类场景通常包括快进（Fast-Forwarding）合并，不同分支添加/修改了不同的文件，不同分支修改相同文件的不同部分等。
+
+当遇到不同分支修改了同一个文件的相同部分时，*Git* 就无法为我们自动合并了，毕竟 *Git* 不能代替人来做决定。这个时候就需要我们人工修改有冲突的文件，*Git* 的厉害之处在于他会在文件中标示出当前分支和并入分支的修改，方便我们解决冲突。我们只要删除 *Git* 引入的提示符（如 >>>>>>> 、<<<<<<<、=======）并把文件修改成我们想要的样子就行。解决完冲突后，我们同样的来一次 `git add` 和 `git commit` 操作就算是完成了合并。
+
+下边我们就演示一把这类场景。
+
+在master分支上新建了一个 **branch-master.list** 文件，同时在 **merge-demo.txt** 文件增加了 **第七** 行 `Line7: 《精通Puppet配置管理工具》`
+
+创建了 **auto-merge** 分支，在 **auto-merge** 分支上新建了一个 **branch-auto-merge.list** 文件，同时在 **merge-demo.txt** 文件增加了 **第七** 行 `New book: 《咖啡世界地图》`
+
+完成这些操作状态如下边3个图。
+
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-21.png)
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-22.png)
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-23.png)
+
+现在我们在 **master** 分支上执行 `git merge auto-merge`，虽然我们希望 *Git* 能帮我们自动合并，但是很遗憾提示有冲突了
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-24.png)
+
+`git status`	我们看到出现了之前我们没有看到过的状态 **Unmerged  paths**，*Git* 友好的提示我们 **fix conflicts and run "git commit"**，即解决冲突然后做一次提交。
+
+这里我们还发现对于 **branch-auto-merge.list** 文件，提示的是 **new file**，表示 *Git* 发现这个是一个新文件，在当前master分支上没有冲突（是否冲突还是由我们自己说了算，我们强行认为它冲突也可以直接删了它...），所以自动给我们合并了。
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-25.png)
+
+在解决冲突之前，我们稍微深入看看 *Git* 做了一些啥。在很早之前我们介绍过的 **.git** （还记得吧？）目录下执行 `ls -l` 我们可以看到 **MERGE_HEAD**、**MERGE_MODE**、**MERGE_MSG** 文件，`cat`一下三个文件，看看内容。
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-26.png)
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-27.png)
+
+这些文件就是 *Git* 在处理合并冲突过程中保存的一些信息
+
+* MERGE_HEAD：合并分支（auto-merge）的commit id
+* MERGE_MODE：合并状态
+* MERGE_MSG：合并信息
+
+在工作区中，我们用 *Git* 工具 `git ls-files -s` 可以看看暂存区文件
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-28.png)
+
+发现有3个同名文件 **merge-demo.txt**， 这三文件编号分别是1、2、3，编号分别表示
+
+* 1：当前冲突的共同祖先版本（即各分支修改以前的样子）
+* 2：当前冲突文件在当前分支中的副本
+* 3：当前冲突文件在并入分支中的副本
+
+由于忘记截图了，顺道说一下，当前工作区中的 **merge-demo.txt** 由于merge操作，已经变成了引入 *Git* 冲突提示的样子（加入了 >>>>>>> 、<<<<<<<、======= 和不同分支里做的修改）。
+
+现在我们按照自己的需求，修改好 **merge-demo.txt** 并完成提交，再到 **.git** 目录中 `ls -l`，发现这些MERGE开头的状态文件已经消失了。
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-29.png)
+
+这时的提交日志状态如下，这个模式的图形我们已经见过好几次了。
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-30.png)
 
 ### 逻辑冲突解决
-### 文件冲突解决
 ### 树冲突解决
