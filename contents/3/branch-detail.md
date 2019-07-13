@@ -239,3 +239,45 @@ replica: 好了，推送到远程仓库上吧！
 解决逻辑冲突的最好方法当然是规范和文档，以及借助编辑器插件、IDE和其他工具进行修正。具体操作这里就不多说了，毕竟我们是在说 *Git*。
 
 ### 树冲突解决
+
+树冲突是指目录、文件名上存在的冲突，这类冲突的解决较为不同，所以单独说明。这里我们使用了先前用到的一个文件 **git-practice-replica.txt** 演示。
+
+本地副本仓库觉得名字太长，所以通过 `git mv git-practice-replica.txt replica.txt` 重命名了文件，然后push到了远程仓库上。
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-42.png)
+
+从远程仓库上我们可以验证文件确实被改了名字。
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-43.png)
+
+本地原来的代码仓库想更省事，`git mv git-practice-replica.txt REPLICA`，再push到远程仓库上，如前边例子，push会发生错误。
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-44.png)
+
+遇到这个错误，我们已经不慌张了，`git pull` 把其他开发者的提交拉回来吧。
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-45.png)
+
+哎！看到一个新的冲突提示了！这次不是说那个文件的修改有冲突，而是指明了对 **git-practice-replica.txt** 这个文件的重命名有冲突。
+
+我们 `git ls-files -s` 确实看到了暂存区编号1、2、3的 **git-practice-replica.txt** 、**REPLICA**、**replica.txt** 三个文件，三个编号的意义之前说过了。
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-46.png)
+
+`ls -ltr` 可以看到当前工作区保留了两个开发者重命名后的文件 **REPLICA**、**replica.txt**。
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-47.png)
+
+现在 **解决冲突** 的方法是，协商好一个最终的文件名，这里选用 **REPLICA**，`git rm replica.txt` 删除另一个。
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-48.png)
+
+完事之后 `git add` `git commit` `git push`三连就OK了。下图中也显示了，完成 `git rm replica.txt` 后，`git status` 已经冲突已经解决了！
+
+到这里树冲突的演示结束了。 
+
+## 总结
+
+到这里分支合并/冲突解决讲完了。还有复杂场景没有演示，我觉得在工作中实际处理更有意思！然后就是分支合并的策略配置，留待各位自己查文档区了解吧。
+
+如果后续有必要，我接着这个文档补充。
