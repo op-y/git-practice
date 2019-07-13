@@ -3,5 +3,6 @@ Line 2: 《大数据日知录 架构与算法》
 Line 3: 《图解密码技术》
 Line 4: 《Ansible权威指南》
 Line 5: 《RabbitMQ实战》
-Line 6: 《Python算法教程》
-Line 7: 《精通Puppet配置管理工具》
+Line 6: 《世界咖啡地图》
+Line 7: 《Python算法教程》
+Line 8: 《精通Puppet配置管理工具》
