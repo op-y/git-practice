@@ -192,5 +192,11 @@ usage: git merge [<options>] [<commit>...]
 
 来，开始我们的演示。
 
+replica: replica表示这行是在副本代码仓库上编辑的
+replica: 我们开始一个有冲突的远端分支拉取操作
+replica: 当前是 **branch-detail.md** 文件
+replica: 这个文件在原来本地仓库已经做了改变了
+replica: 好了，推送到远程仓库上吧！
+
 ### 逻辑冲突解决
 ### 树冲突解决
