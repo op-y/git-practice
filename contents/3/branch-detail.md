@@ -212,5 +212,25 @@ usage: git merge [<options>] [<commit>...]
 
 ![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-35.png)
 
+replica: replica表示这行是在副本代码仓库上编辑的
+replica: 我们开始一个有冲突的远端分支拉取操作
+replica: 当前是 **branch-detail.md** 文件
+replica: 这个文件在原来本地仓库已经做了改变了
+replica: 好了，推送到远程仓库上吧！
+
+这一行开始又是在原来本地仓库上编辑了。下边我们直接把图贴上了。
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-36.png)
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-37.png)
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-38.png)
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-39.png)
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-40.png)
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-41.png)
+
 ### 逻辑冲突解决
 ### 树冲突解决
