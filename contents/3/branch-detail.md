@@ -186,11 +186,31 @@ usage: git merge [<options>] [<commit>...]
 
 ![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-30.png)
 
-### 快进和远程分支合并
+### 远程分支合并
 
-冲突解决中还有这么一类常见的情况，就是本地仓库的工作要提交（push）到远程仓库中，系统提示无法合并，原因是其他开发者已经 **抢先** 将他的工作提交到远程仓库上。这个时候我们需要将他的提交拉取到本地。如果我们当前的工作和他做的修改没有冲突则 *Git* 会做一次快进合并；如果出现了冲突我们就要先解决冲突了。
+冲突解决中还有这么一类常见的情况，就是本地仓库的工作要提交（push）到远程仓库中，系统提示无法合并，原因是其他开发者已经 **抢先** 将他的工作提交到远程仓库上。这个时候我们需要将他的提交拉取到本地做一次合并。
 
 来，开始我们的演示。
+
+我们从一个副本代码仓库创建一个文件 **git-practice-replica.txt**，做一次提交并推送（push）到远程仓库
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-31.png)
+
+编辑完成本地代码仓库文件后，我们 `git status` 查看当前状态，`git remote show origin` 查看远程**origin**仓库状态，现在是本地仓库有改动，并且落后远程仓库了
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-32.png)
+
+我们 `git add` `git commit` `git push` 三连，发现果然报错了，还给了提示，就是："远程仓库有我们本地仓库还没有包含的工作，可能是其他仓库推送上去的，我们需要集成远程仓库的这些工作，然后重新推送“
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-33.png)
+
+来，`git pull` 直接拉取自动合并了（因为没有冲突） 
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-34.png)
+
+然后 `git push` 完成提交到远程仓库。
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-35.png)
 
 ### 逻辑冲突解决
 ### 树冲突解决
