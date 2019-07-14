@@ -274,6 +274,8 @@ replica: 好了，推送到远程仓库上吧！
 
 完事之后 `git add` `git commit` `git push`三连就OK了。下图中也显示了，完成 `git rm replica.txt` 后，`git status` 已经冲突已经解决了！
 
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-49.png)
+
 到这里树冲突的演示结束了。 
 
 ## 总结
