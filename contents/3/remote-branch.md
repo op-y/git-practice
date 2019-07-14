@@ -129,9 +129,11 @@
 
 这个时候我们就可以执行 `git pull` 和 `git push` 操作了
 
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-66.png)
 
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-67.png)
 
-## 推送到远程分支
+在后边删除操作演示之前我们把对文档的修改合并到**master**分支上，你懂的！
 
 ## 删除远程分支
 
