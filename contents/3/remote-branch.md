@@ -135,4 +135,22 @@
 
 在后边删除操作演示之前我们把对文档的修改合并到**master**分支上，你懂的！
 
+### demo 7
+
+现在我们可以删除远程分支**origin/feature-remote-demo**了
+
+`git push origin --delete feature-remote-demo`
+
+从*Github*页面上看，这个远程分支已经被删除了。但是从本地分支列表和**.git/config**文件看，本地**feature-remote-demo**分支还存在，并且保持着对**origin/feature-remote-demo**远程分支的跟踪，这些事需要我们自己来处理的。
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-68.png)
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-69.png)
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-70.png)
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-71.png)
+
+这里由于演示已经完成，我们直接删除**feature-remote-demo**分支了。
+
 ## 总结
