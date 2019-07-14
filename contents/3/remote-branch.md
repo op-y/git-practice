@@ -78,10 +78,61 @@
 
 ![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-55.png)
 
-## 从远程分支拉取：git fetch 和 get pull
+## 设置和操作远程分支
 
-## 推送到远程分支
+前边我们已经介绍了**远程分支**和**跟踪分支**作用，我们现在用几个实际操作演示下远程分支设置操作。
 
-## 删除远程分支
+### demo 1
+
+`git checkout -b celine-master celine/master` 我们以**celine/master**远程分支在本地创建一个**celine-master**分支，同时可以看到**.git/config**文件新增的**branch "celine-master"**小节。
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-56.png)
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-57.png)
+
+### demo 2
+
+`git checkout feature-remote-demo` 切换到**feature-remote-demo**分支，执行`git branch -u celine/master`，就可以设置分支与远程分支的联系，这里我们追踪了**celine/master**分支，从**.git/config**里也能看到设置的结果
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-58.png)
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-59.png)
+
+
+### demo 3
+
+当然我们对Celine Wong的仓库并没有写权限，所以我执行了 `git branch --unset-upstream`，取消了对上游分支的追踪
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-60.png)
+
+### demo 4
+
+通过 `git push origin feature-remote-demo` 可以将本地创建的**feature-remote-demo**分支推送到**origin**远程仓库上。不过通过**.git/config**我们看到 *Git* 没有主动为 **feature-remote-demo** 创建远程分支关联信息，在*Github*页面上我们已经可以看到 **feature-remote-demo** 分支了。
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-61.png)
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-62.png)
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-63.png)
+
+### demo 5
+
+这种状态下直接 `git pull` 会报错，说我们的分支没有任何跟踪信息，需要我们做设置（*There is no tracking information for the current branch.*）
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-64.png)
+
+`git branch -u origin/feature-remote-demo` 和之前我们push的远程分支建立跟踪关系
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-65.png)
+
+### demo 6
+
+这个时候我们就可以执行 `git pull` 和 `git push` 操作了
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-66.png)
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-67.png)
+
+在后边删除操作演示之前我们把对文档的修改合并到**master**分支上，你懂的！
 
 ## 总结
