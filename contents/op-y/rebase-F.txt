@@ -1,2 +1,4 @@
 # rebase
 add file rebase-F.txt
+
+为了演示rebase合并分支，这个文件就遭了殃...
