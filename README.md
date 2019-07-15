@@ -31,8 +31,11 @@
    - 3.3.[开发模型](https://github.com/op-y/git-practice/blob/master/contents/3/git-branching-model.md)
    - 3.4.[变基](https://github.com/op-y/git-practice/blob/master/contents/3/)
 - 4.Git工具和一些原理
-   - 4.0.
-- 最后：
-    - 1.[git遇到的错误集锦](https://github.com/op-y/git-practice/blob/master/contents/celine/error-collect.md)
-    - 2.[git的一些具体场景应用](https://github.com/op-y/git-practice/blob/master/contents/celine/case-collect.md)
-
+   - 4.0.[git revert](https://github.com/op-y/git-practice/blob/master/contents/4/)
+   - 4.1.[git stash 和储藏](https://github.com/op-y/git-practice/blob/master/contents/4/)
+   - 4.2.[git cat-file 和对象](https://github.com/op-y/git-practice/blob/master/contents/4/)
+   - 4.3.[git reflog 和引用](https://github.com/op-y/git-practice/blob/master/contents/4/)
+   - 4.4.[写在后边](https://github.com/op-y/git-practice/blob/master/contents/4/)
+- 补充：
+   - 1.[git遇到的错误集锦](https://github.com/op-y/git-practice/blob/master/contents/celine/error-collect.md)
+   - 2.[git的一些具体场景应用](https://github.com/op-y/git-practice/blob/master/contents/celine/case-collect.md)
