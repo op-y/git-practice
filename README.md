@@ -29,7 +29,7 @@
    - 3.1.[分支创建、合并、管理以及冲突解决](https://github.com/op-y/git-practice/blob/master/contents/3/branch-detail.md)
    - 3.2.[远程分支](https://github.com/op-y/git-practice/blob/master/contents/3/remote-branch.md)
    - 3.3.[开发模型](https://github.com/op-y/git-practice/blob/master/contents/3/git-branching-model.md)
-   - 3.4.[变基](https://github.com/op-y/git-practice/blob/master/contents/3/)
+   - 3.4.[变基](https://github.com/op-y/git-practice/blob/master/contents/3/rebase.md)
 - 4.Git工具和一些原理
    - 4.0.[git revert](https://github.com/op-y/git-practice/blob/master/contents/4/)
    - 4.1.[git stash 和储藏](https://github.com/op-y/git-practice/blob/master/contents/4/)

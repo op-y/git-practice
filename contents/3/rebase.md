@@ -81,8 +81,120 @@ usage: git rebase [-i] [options] [--exec <cmd>] [--onto <newbase>] [<upstream>] 
     --root                rebase all reachable commits up to the root(s)
 ```
 
+是不是看到这个帮助信息顿时头晕目眩？还好，有大佬给我们总结了`git rebase`的基本用法：
+
+```
+git rebase --onto <newbase> <since> <till> 
+# 这是归一化用法，步骤为：
+# git checkout till（改变HEAD）
+# 将 since（不包括）到till（包括）标识的提交范围写到临时文件中
+# git reset --hard newbase
+# 从保存的临时文件的提交列表中，将提交逐一按顺序重新提交到重置之后的分支上
+# 如果遇到提交已经在分支中包含，则跳过改提交
+# 如果提交过程中遇到冲突，则变基暂停。然后视情况做 --continue/--skip/--abort 操作了
+# 最终完成变基操作（活着回滚了）
+
+
+git rebase --onto <newbase> <since>
+git rebase <since> <till>
+git rebase <since>
+git rebase -i ... # 交互式变基
+git rebase --continue # 变基过程中解决冲突后继续
+git rebase --skip # 变基过程中遇到冲突跳过当时提交
+git rebase --abort # 变基过程中遇到冲突放弃变基操作回到开始变基前状态
+```
+
 ## 应用场景
+
+介绍了这么多 `git rebase` 命令的信息，实际工作中用得最多的是两种场景。
+
+### 清理提交
+
+通常我们在自己私有分支上做特性开发/bugfix，过程中我们会时不时的做提交操作，一天之内通常也就做一两次push操作，将我们的工作推送到共享仓库上。如果直接push，会将过程中我们零零碎碎十几次甚至几十次提交一并推送，对共享仓库造成污染，这个时候我们可以在push操作前，使用rebase操作合并我们的提交，最后push一次有效的提交即可。
+
+如下图，我们在**master**分支上做了六次提交（每次添加了一个文件，同时修改了前边添加的文件）模拟我们工作过程。
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-72.png)
+
+在我们执行push动作之前，我们执行 `git rebase -i` 命令，我们会进入交互式编辑页面，如下图
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-73.png)
+
+这个页面信息就丰富了，首先 1-6 行是带处理提交，**#**开头的是提示信息。
+
+每一行待处理的提交格式为：**命令 原commit-id 原commit-message**
+
+提示信息告诉我们
+
+* pick：使用这个提交
+* reword：使用这个提交，但是修改提交信息
+* edit：使用这个提交，但是暂停，修改提交
+* squash：使用这个提交，但是合并到之前的一个提交上去
+* fixup：同squash，但是丢弃提交信息
+* exec <command>：运行shell命令
+* break：在这里暂停
+* drop：丢弃这个提交
+* label <label>：给当前HEAD打一个标签？
+* reset <label>：reset HEAD到label上
+* merge ...
+
+这里我们只需要把 2-6 行到 **pick** 改成 **squash** 就行了
+
+如下图，由于没有冲突，*Git* 自动给我们完成了变基操作
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-74.png)
+
+这个时候我们再看提交日志，原来到6次提交变成了1次提交，特别注意，**提交到的ID已经和原来不一样了**！
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-75.png)
+
+再看看最后一次提交信息，已经是我们合并好之后的内容了
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-76.png)
+
+到这里我们就可以push这一个提交到共享仓库上了。
+
+### 线性合并
+
+线性合并是针对本节开始提出的疑问进行的操作。我们看下边这个例子。
+
+先从**master**分支拉出一个**rebase-demo**分支，然后添加了**rebase-demo.txt**文件，并且修改前边**rebase-F.txt**文件，做了一次提交
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-77.png)
+
+回到**master**分支上，添加了一个**master-while-rebse—demo.txt**文件（文件名单词拼写错了，将错就错了...)，做了一次提交
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-78.png)
+
+查看提交日志，**master**和**rebase-demo**已经分叉了，这个已经是我们常见的状态了。
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-79.png)
+
+如果我们不想产生一个新的提交来将**rebase-demo**分支合并到**master**分支，怎么做?
+
+先切换到**rebase-demo**分支，果断执行 `git rebase master`，看到 *Git* 自动为我们执行了变基操作
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-80.png)
+
+查看提交日志，**rebase-demo**分支现在已经在**master**分支之前，而不是分叉状态了
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-81.png)
+
+切回到**master**分支，再执行`git merge rebase-demo`，由于**master**此时是单纯落后于**rebase-demo**，*Git* 自动做了一次快进，完成了合并操作
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-82.png)
+
+最后查看提交日志，我们完成了一次线性合并。（这里我不说没有产生新的提交，理由可以自己想想）
+
+![git-practice](https://github.com/op-y/git-practice/blob/master/images/3/snip.3-83.png)
+
 
 ## 他山之石
 
-## 总结
+* 如果是对本地私有的临时分支，则可以直接 `git rebase -i master` + `git merge` 产生一个快进，最终以一个提交展示在master分支上
+* 如果是一个特别活动的分支，如feature分支、bugfix分支，那么永远不要使用rebase，而是 `git merge --no-ff`，这样该分支历史将永远存续在主分支上
+* 只要你的不再有子分支的分支上需要rebase的所有提交还没有被push到共享仓库，就可以安全的使用rebase
+
+## 小结
+
+**变基**操作相当的复杂，我这里也只是了解了一点皮毛，实际工作中也很好碰到。最好的学习方法就是想到什么场景，自己搞个仓库，可劲折腾一番！
