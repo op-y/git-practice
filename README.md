@@ -33,9 +33,8 @@
 - 4.Git工具和一些原理
    - 4.0.[git revert](https://github.com/op-y/git-practice/blob/master/contents/4/revert.md)
    - 4.1.[git stash 和储藏](https://github.com/op-y/git-practice/blob/master/contents/4/stash.md)
-   - 4.2.[git cat-file 和对象](https://github.com/op-y/git-practice/blob/master/contents/4/)
-   - 4.3.[git reflog 和引用](https://github.com/op-y/git-practice/blob/master/contents/4/)
-   - 4.3.[git cherry-pick 提交拣选](https://github.com/op-y/git-practice/blob/master/contents/4/)
+   - 4.2.[git cat-file 和对象](https://github.com/op-y/git-practice/blob/master/contents/4/git-object.md)
+   - 4.3.[git引用](https://github.com/op-y/git-practice/blob/master/contents/4/git-ref.md)
    - 4.4.[写在后边](https://github.com/op-y/git-practice/blob/master/contents/4/)
 - 补充：
    - 1.[git遇到的错误集锦](https://github.com/op-y/git-practice/blob/master/contents/celine/error-collect.md)
