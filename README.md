@@ -35,7 +35,7 @@
    - 4.1.[git stash 和储藏](https://github.com/op-y/git-practice/blob/master/contents/4/stash.md)
    - 4.2.[git cat-file 和对象](https://github.com/op-y/git-practice/blob/master/contents/4/git-object.md)
    - 4.3.[git引用](https://github.com/op-y/git-practice/blob/master/contents/4/git-ref.md)
-   - 4.4.[写在后边](https://github.com/op-y/git-practice/blob/master/contents/4/)
+   - 4.4.[写在后边](https://github.com/op-y/git-practice/blob/master/contents/4/at-the-end.md)
 - 补充：
    - 1.[git遇到的错误集锦](https://github.com/op-y/git-practice/blob/master/contents/celine/error-collect.md)
    - 2.[git的一些具体场景应用](https://github.com/op-y/git-practice/blob/master/contents/celine/case-collect.md)
