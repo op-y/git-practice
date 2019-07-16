@@ -31,8 +31,8 @@
    - 3.3.[开发模型](https://github.com/op-y/git-practice/blob/master/contents/3/git-branching-model.md)
    - 3.4.[变基](https://github.com/op-y/git-practice/blob/master/contents/3/rebase.md)
 - 4.Git工具和一些原理
-   - 4.0.[git revert](https://github.com/op-y/git-practice/blob/master/contents/4/)
-   - 4.1.[git stash 和储藏](https://github.com/op-y/git-practice/blob/master/contents/4/)
+   - 4.0.[git revert](https://github.com/op-y/git-practice/blob/master/contents/4/revert.md)
+   - 4.1.[git stash 和储藏](https://github.com/op-y/git-practice/blob/master/contents/4/stash.md)
    - 4.2.[git cat-file 和对象](https://github.com/op-y/git-practice/blob/master/contents/4/)
    - 4.3.[git reflog 和引用](https://github.com/op-y/git-practice/blob/master/contents/4/)
    - 4.3.[git cherry-pick 提交拣选](https://github.com/op-y/git-practice/blob/master/contents/4/)
